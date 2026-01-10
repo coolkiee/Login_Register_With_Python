@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register</title>
+
+    <style>
+        body {
+            background-color: #313131;
+            color: orange;
+
+        }
+
+        @keyframes twinkle {
+            0% {
+
+                background-color: #6666ff;
+                box-shadow: 20px 20px 50px #6666ff;
+            }
+
+            25% {
+                background-color: #0099ff;
+                box-shadow: 20px 20px 50px #0099ff;
+            }
+
+            50% {
+                background-color: #00ff00;
+                box-shadow: 20px 20px 50px #00ff00;
+            }
+
+            75% {
+                background-color: #ff3399;
+                box-shadow: 20px 20px 50px #ff3399;
+            }
+
+            100% {
+                background-color: #6666ff;
+                box-shadow: 20px 20px 50px #6666ff;
+            }
+        }
+
+        .container {
+            display: flex;
+            flex-direction: column;
+            width: 400px;
+            height: auto;
+            margin: auto;
+            margin-top: 100px;
+            padding: 3px;
+            /* back ground değiştirmek için buradan*/
+            padding-right: 43px;
+            /* back ground değiştirmek için buradan*/
+            border-radius: 50px;
+            align-items: center;
+            animation-name: twinkle;
+            animation-duration: 1s;
+            animation-iteration-count: infinite;
+        }
+
+        .container-menu {
+            display: flex;
+            flex-direction: column;
+
+            background-color: #626262;
+            width: 400px;
+            height: auto;
+            margin: auto;
+            gap: 10px;
+            padding: 20px;
+            border-radius: 50px;
+        }
+
+        .input-group {
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+            color: orange;
+            font-size: 20px;
+            font-weight: bold;
+        }
+
+        .input-group input {
+            height: 30px;
+            border-radius: 10px;
+            border: none;
+            padding: 5px;
+            font-size: 16px;
+        }
+
+        .input-group input:focus {
+            background-color: orange;
+            color: black;
+        }
+
+        button {
+            height: 40px;
+            border-radius: 20px;
+            font-weight: bold;
+            background-color: #313131;
+            color: orange;
+        }
+
+        button:hover {
+            animation-name: twinkle;
+            animation-duration: 1s;
+            animation-iteration-count: infinite;
+            color: black
+        }
+
+        a {
+            color: orange;
+            text-decoration: none;
+            text-align: left;
+            font-size: 20px;
+            font-weight: bold;
+        }
+
+        a:hover {
+            text-decoration: underline;
+            color: orangered;
+
+        }
+
+        a:active {
+            color: red;
+        }
+    </style>
+
+
+</head>
+
+<body>
+    <button type="submit" onclick="window.open('main_page.html', '_blank')">Main Page</button>
+    <form method="post">
+        <div class="container">
+            <div class="container-menu">
+                <div class="input-group">
+                    <a href="login.html">
+                        <p><---- I have a Account</p>
+                    </a>
+                </div>
+
+
+                <div class="input-group">
+                    <label for="firstname">Firstname</label>
+                    <input type="text" id="firstname" name="firstname">
+                </div>
+                <div class="input-group">
+                    <label for="lastname">Last Name</label>
+                    <input type="text" id="lastname" name="lastname">
+                </div>
+
+                <div class="input-group">
+                    <label for="email">email</label>
+                    <input type="email" id="email" name="email">
+                </div>
+                <div class="input-group">
+                    <label for="password">password</label>
+                    <input type="password" id="password" name="password">
+                </div>
+                <div class="input-group">
+                    <label for="age">Age</label>
+                    <input type="number" id="age" name="age">
+                </div>
+                <div class="input-group">
+                    <button type="submit" name="register">Register</button>
+                </div>
+            </div>
+        </div>
+    </form>
+</body>
+{% with messages = get_flashed_messages() %}
+  {% if messages %}
+    {% for msg in messages %}
+      <p>{{msg}}</p>
+    {% endfor %}
+  {% endif %}
+{% endwith %}
+</html>

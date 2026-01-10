@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Ana Sayfa</title>
+      <style>
+        body {
+            background-color: #313131;
+        }
+
+        @keyframes twinkle {
+            0% {
+
+                background-color: #6666ff;
+                box-shadow: 20px 20px 50px #6666ff;
+            }
+
+            25% {
+                background-color: #0099ff;
+                box-shadow: 20px 20px 50px #0099ff;
+            }
+
+            50% {
+                background-color: #00ff00;
+                box-shadow: 20px 20px 50px #00ff00;
+            }
+
+            75% {
+                background-color: #ff3399;
+                box-shadow: 20px 20px 50px #ff3399;
+            }
+
+            100% {
+                background-color: #6666ff;
+                box-shadow: 20px 20px 50px #6666ff;
+            }
+        }
+
+        .container {
+            display: flex;
+            flex-direction: column;
+            width: 400px;
+            height: auto;
+            margin: auto;
+            margin-top: 100px;
+            animation-name: twinkle;
+            animation-duration: 1s;
+            animation-iteration-count: infinite;
+            border-radius: 50px;
+        }
+
+
+        .container-menu {
+            display: flex;
+            background-color: #626262;
+            width: 400px;
+            margin: auto;
+            gap: 10px;
+            padding: 20px;
+            border-radius: 50px;
+            height: auto;
+        }
+
+        .menu {
+            width: 100%;
+
+        }
+
+        .menu button {
+            width: 100%;
+            height: 200px;
+            border-radius: 30px;
+            background-color: orange;
+            color: black;
+            font-size: 20px;
+            font-weight: bold;
+            cursor: pointer;
+            border: none;
+
+        }
+
+        .menu button:hover {
+            animation-name: twinkle;
+            animation-duration: 1s;
+            animation-iteration-count: infinite;
+            transform: scale(1.1);
+        }
+    </style>
+</head>
+
+<body>
+   <div class="container">
+        <div class="container-menu">
+            <div class="menu">
+                <button type="submit" onclick="window.open('/login', '_blank')">login</button>
+            </div>
+            <div class="menu">
+                <button type="submit" onclick="window.open('/register', '_blank')">register</button>
+            </div>
+        </div>
+    </div>
+
+</body>
+
+
+</html>
