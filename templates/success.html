@@ -1,11 +1,119 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            background-color: #313131;
+            color: white;
+        }
+
+        .container {
+            position: relative;
+            width: 400px;
+            height: 400px;
+            margin: auto;
+            top: 100px;
+        }
+
+        .container-menu {
+            display: flex;
+            flex-direction: column;
+            width: 400px;
+            height: auto;
+            margin: auto;
+            align-items: center;
+        }
+
+        .kalp {
+            width: 200px;
+            height: 200px;
+            background-color: red;
+            position: absolute;
+            transform: rotate(-45deg);
+            top: 100px;
+            left: 100px;
+            animation: twinkle 4s infinite;
+
+
+        }
+
+        .yuvarlak {
+            width: 200px;
+            height: 200px;
+            background-color: red;
+            border-radius: 50%;
+            position: absolute;
+            animation: twinkle 4s infinite;
+
+        }
+
+        #yukarı {
+            top: 0;
+            left: -100px;
+        }
+
+        #assagi {
+            top: -100px;
+            left: 0;
+        }
+
+        @keyframes twinkle {
+            0% {
+
+                background-color: #6666ff;
+                box-shadow: 20px 20px 50px #6666ff;
+            }
+
+            25% {
+                background-color: #0099ff;
+                box-shadow: 20px 20px 50px #0099ff;
+            }
+
+            50% {
+                background-color: #00ff00;
+                box-shadow: 20px 20px 50px #00ff00;
+            }
+
+            75% {
+                background-color: #ff3399;
+                box-shadow: 20px 20px 50px #ff3399;
+            }
+
+            100% {
+                background-color: #6666ff;
+                box-shadow: 20px 20px 50px #6666ff;
+            }
+        }
+    </style>
 </head>
+
 <body>
+
+    <div class="container">
+        <div class="kalp">
+            <div class="yuvarlak" id="yukarı"></div>
+            <div class="yuvarlak" id="assagi"></div>
+        </div>
+
+    </div>
+    <div class="container">
+        <div class="container-menu">
+            <form method="get">
+                <h1 style="color: orange;">Login to Succsessfully</h1>
+                <label name="name"></label>
+                <label name="lastname"></label>
+                <label name="email"></label>
+                <label name="age"></label>
+            </form>
+        </div>
+
+    </div>
 
 
 </body>
+
 </html>
