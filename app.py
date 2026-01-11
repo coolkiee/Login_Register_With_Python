@@ -60,7 +60,7 @@ def append_user(user_dict: dict) -> None:
     df.to_csv(FILE_NAME, index=False, encoding="utf-8")
 
 
-@app.route("/index")
+@app.route("/")
 def index():
     return render_template("index.html")
 
