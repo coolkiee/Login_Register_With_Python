@@ -100,6 +100,7 @@
             font-weight: bold;
             background-color: #313131;
             color: orange;
+            cursor: pointer;
         }
 
         button:hover {
@@ -132,12 +133,13 @@
 </head>
 
 <body>
-    <button type="submit" onclick="window.open('main_page.html', '_blank')">Main Page</button>
+    <a href="{{ url_for('index') }}"><button type="button">Main Page</button></a>
+
     <form method="post">
         <div class="container">
             <div class="container-menu">
                 <div class="input-group">
-                    <a href="login.html">
+                    <a href="{{ url_for('login') }}">
                         <p><---- I have a Account</p>
                     </a>
                 </div>
@@ -145,37 +147,40 @@
 
                 <div class="input-group">
                     <label for="firstname">Firstname</label>
-                    <input type="text" id="firstname" name="firstname">
+                    <input type="text" id="firstname" name="name" required>
                 </div>
                 <div class="input-group">
                     <label for="lastname">Last Name</label>
-                    <input type="text" id="lastname" name="lastname">
+                    <input type="text" id="lastname" name="surname" required>
                 </div>
 
                 <div class="input-group">
                     <label for="email">email</label>
-                    <input type="email" id="email" name="email">
+                    <input type="email" id="email" name="email" required>
                 </div>
                 <div class="input-group">
                     <label for="password">password</label>
-                    <input type="password" id="password" name="password">
+                    <input type="password" id="password" name="password" required>
                 </div>
                 <div class="input-group">
                     <label for="age">Age</label>
-                    <input type="number" id="age" name="age">
+                    <input type="number" id="age" name="age" required>
                 </div>
                 <div class="input-group">
-                    <button type="submit" name="register">Register</button>
+                    <button type="submit">Register</button>
                 </div>
             </div>
         </div>
     </form>
+
+    {% with messages = get_flashed_messages() %}
+      {% if messages %}
+        <div style="text-align: center; color: white; margin-top: 20px;">
+          {% for msg in messages %}
+            <p>{{msg}}</p>
+          {% endfor %}
+        </div>
+      {% endif %}
+    {% endwith %}
 </body>
-{% with messages = get_flashed_messages() %}
-  {% if messages %}
-    {% for msg in messages %}
-      <p>{{msg}}</p>
-    {% endfor %}
-  {% endif %}
-{% endwith %}
 </html>
