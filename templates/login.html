@@ -97,6 +97,7 @@
             font-weight: bold;
             background-color: #313131;
             color: orange;
+            cursor: pointer;
         }
 
         button:hover {
@@ -151,7 +152,7 @@
                     <input type="password" id="password" name="password">
                 </div>
                 <button type="submit">Log In</button>
-                <button type="reset" onclick="window.open('/index' ,'_blank')">Main Page</button>
+                <button type="button" onclick="window.open('{{ url_for('index') }}' ,'_blank')">Main Page</button>
             </form>
         </div>
     </div>
