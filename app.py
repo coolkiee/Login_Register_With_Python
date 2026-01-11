@@ -6,11 +6,8 @@ import secrets
 from user import User
 
 app = Flask(__name__)
-# Gizli anahtarı koda gömmek yerine ortam değişkeninden okuyun.
-# Windows'ta örnek: set FLASK_SECRET_KEY=<SECRET_KEY_PLACEHOLDER>
 app.secret_key = os.environ.get("FLASK_SECRET_KEY") or secrets.token_hex(32)
 
-# Excel yerine CSV kullanarak openpyxl bağımlılığını tamamen kaldırıyoruz.
 FILE_NAME = "users.csv"
 COLUMNS = ["first_name", "last_name", "email", "password", "age"]
 
@@ -20,7 +17,6 @@ def hash_password(password: str) -> str:
 
 
 def _ensure_user_store_exists() -> None:
-    """Veri dosyası yoksa, doğru kolonlarla oluşturur."""
     if not os.path.exists(FILE_NAME):
         df = pd.DataFrame(columns=COLUMNS)
         df.to_csv(FILE_NAME, index=False, encoding="utf-8")
@@ -28,14 +24,10 @@ def _ensure_user_store_exists() -> None:
 
 def load_users():
     _ensure_user_store_exists()
-
     df = pd.read_csv(FILE_NAME, dtype=str, keep_default_na=False, encoding="utf-8")
-
-    # Kolonlar eksik/bozuksa toparla (uzun vadede daha dayanıklı)
     for col in COLUMNS:
         if col not in df.columns:
             df[col] = ""
-
     users = []
     for _, row in df.iterrows():
         users.append(
@@ -51,9 +43,7 @@ def load_users():
 
 
 def append_user(user_dict: dict) -> None:
-    """Yeni kullanıcıyı CSV'ye ekler."""
     _ensure_user_store_exists()
-
     df = pd.read_csv(FILE_NAME, dtype=str, keep_default_na=False, encoding="utf-8")
     df_new = pd.DataFrame([user_dict], columns=COLUMNS)
     df = pd.concat([df, df_new], ignore_index=True)
@@ -86,11 +76,11 @@ def register():
             "password": password,
             "age": age,
         }
-        #templates
         append_user(new_user)
 
         flash("Başarıyla kayıt oldunuz!", "success")
-        return redirect(url_for("/login"))
+        # DÜZELTME: / kaldırıldı
+        return redirect(url_for("login"))
 
     return render_template("register.html")
 
@@ -102,13 +92,21 @@ def login():
         password = hash_password(request.form["password"])
 
         users = load_users()
+
+        # DÜZELTME: Doğru login kontrolü
+        user_to_login = None
         for u in users:
             if (u.email or "").strip().lower() == email and u.password == password:
-                flash(f"Hoş geldin {u.first_name}!", "success")
-                return redirect(url_for("/index"))
-            else:
-                flash("E-posta veya şifre hatalı!", "danger")
-                return redirect(url_for("login"))
+                user_to_login = u
+                break
+
+        if user_to_login:
+            flash(f"Hoş geldin {user_to_login.first_name}!", "success")
+            # DÜZELTME: / kaldırıldı
+            return redirect(url_for("index"))
+        else:
+            flash("E-posta veya şifre hatalı!", "danger")
+            return redirect(url_for("login"))
 
     return render_template("login.html")
 
