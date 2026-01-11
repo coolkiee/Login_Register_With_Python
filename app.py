@@ -84,7 +84,6 @@ def register():
 
     return render_template("register.html")
 
-
 @app.route("/login", methods=["GET", "POST"])
 def login():
     if request.method == "POST":
@@ -101,14 +100,20 @@ def login():
                 break
 
         if user_to_login:
-            flash(f"Hoş geldin {user_to_login.first_name}!", "success")
+            flash(f"Welcome {user_to_login.first_name}!", "success")
             # DÜZELTME: / kaldırıldı
-            return redirect(url_for("index"))
+            return redirect(url_for("success"))
         else:
             flash("E-posta veya şifre hatalı!", "danger")
             return redirect(url_for("login"))
 
     return render_template("login.html")
+
+@app.route("/success")
+def success():
+
+    return render_template("success.html")
+
 
 
 if __name__ == "__main__":

@@ -128,13 +128,7 @@
 </head>
 
 <body>
-    {% with messages = get_flashed_messages() %}
-        {% if messages %}
-            {% for msg in messages %}
-                <p>{{msg}}</p>
-            {% endfor %}
-        {% endif %}
-    {% endwith %}
+
     <div class="container">
         <div class="container-menu">
             <form method="post">
@@ -142,6 +136,7 @@
                     <a href="{{ url_for('register') }}">
                         <p>&lt;---- I dont have a Account</p>
                     </a>
+
 
 
                     <label for="email">email</label>
