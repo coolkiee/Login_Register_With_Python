@@ -47,3 +47,32 @@ Download the project files from GitHub:
 ```bash
 git clone https://github.com/coolkiee/Login_Register_With_Python.git
 cd Login_Register_With_Python
+
+2. Create a Virtual Environment (Recommended)
+It is best practice to run Python projects in a virtual environment to avoid dependency conflicts.
+
+# Create the virtual environment
+python -m venv venv
+
+Activate the virtual environment:
+  *Windows:
+    venv\Scripts\activate
+  *linux/mac:
+    source venv/bin/activate
+
+3. Install Dependencies
+  Once the virtual environment is active (you should see (venv) in your terminal), install the required packages:
+  pip install flask pandas
+4. Run the Application
+  Start the Flask server:
+    python app.py
+  After running the command, you will see a message indicating the server is running. Open your browser and navigate     to:👉 http://127.0.0.1:5000
+    
+📂 Project Structure
+Login_Register_With_Python/
+├── app.py              # Main Flask application entry point
+├── user_manager.py     # Handles user logic (Register, Login, CSV ops)
+├── user.py             # User class definition
+├── users.csv           # CSV database file
+├── templates/          # HTML templates (Login, Register pages)
+└── README.md           # Project documentation
