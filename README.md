@@ -1,6 +1,6 @@
 # 🐍 Flask User Registration & Login System
 
-![Python](https://img.shields.io/badge/Python-3.x-blue?style=flat&logo=python)
+![Python](https://img.shields.io/badge/Python-3.14-blue?style=flat&logo=python)
 ![Flask](https://img.shields.io/badge/Framework-Flask-green?style=flat&logo=flask)
 ![Pandas](https://img.shields.io/badge/Data-Pandas-150458?style=flat&logo=pandas)
 
@@ -76,3 +76,4 @@ Login_Register_With_Python/
 ├── users.csv           # CSV database file
 ├── templates/          # HTML templates (Login, Register pages)
 └── README.md           # Project documentation
+
